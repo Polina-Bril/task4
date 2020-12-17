@@ -1,5 +1,3 @@
-//jQuery(document).ready(function($) {
-
 var $table = $('#table')
 var $remove = $('#remove')
 var selections = []
@@ -7,13 +5,13 @@ var selections = []
 function getIdSelections() {
 	return $.map($table.bootstrapTable('getSelections'),
 		function(row) {
-			return row.ID
+			return row.id
 		})
 }
 
 function responseHandler(res) {
 	$.each(res.rows, function(i, row) {
-		row.state = $.inArray(row.ID, selections) !== -1
+		row.state = $.inArray(row.id, selections) !== -1
 	})
 	return res
 }
@@ -21,7 +19,7 @@ function initTable() {
 	$remove.click(function() {
 		var ids = getIdSelections()
 		$table.bootstrapTable('remove', {
-			field: 'ID',
+			field: 'id',
 			values: ids
 		})
 	})
@@ -29,4 +27,3 @@ function initTable() {
 $(function() {
 	initTable()
 })
-//})

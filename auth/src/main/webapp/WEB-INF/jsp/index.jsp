@@ -19,7 +19,7 @@
   <sec:authorize access="isAuthenticated()">
     <h4><a href="/logout">Logout</a></h4>
   </sec:authorize>
-  <h4><a href="/admin">Users (authorized only)</a></h4>
+  <h4><a href="/admin">UserList (authorized only)</a></h4>
 </div>
 </body>
 </html>

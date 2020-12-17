@@ -22,6 +22,7 @@ public class User implements UserDetails {
 	private boolean blocked=false;
 	private final Date registration = new Date();
 	private Date lastLogin;
+	private String status;
 
 	public User() {
 	}
@@ -111,5 +112,14 @@ public class User implements UserDetails {
 	public Date getRegistration() {
 		return registration;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 
 }
