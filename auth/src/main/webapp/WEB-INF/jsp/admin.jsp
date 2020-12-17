@@ -26,9 +26,9 @@
 	<table border="1" width="80%" align="center">
 		<tr>
 			<td height="350px" valign="top" width="100%">
-				<%-- Page Content Area--%>
+				
 				<h3>User List</h3>
-				<form action="<s:url value="/checkbx"/>">
+				<form action="<s:url value="/checkbx"/>" method="post">
 					<div id="toolbar">
 						<button id="action" value="block" class="btn btn-danger">Block</button>
 						<button id="action" value="unblock" class="btn btn-danger">
@@ -39,13 +39,13 @@
 						</button>
 
 					</div>
-					<table id="table" data-toggle="table" data-toolbar="#toolbar"
-						border="1" cellpadding="3" width="100%" data-response-handler="responseHandler" 	data-select-item-name="btn">
+					<table data-toggle="table" data-toolbar="#toolbar" border="1"
+						cellpadding="3" width="100%">
 
 						<thead>
 							<tr>
 								<th data-field="state" data-checkbox=true></th>
-								<th data-field="ID">ID</th>
+								<th>ID</th>
 								<th>NAME</th>
 								<th>EMAIL</th>
 								<th>REGISTRY DATE</th>
@@ -62,47 +62,20 @@
 
 						<c:forEach var="c" items="${allUsers}" varStatus="st">
 							<tr>
-								<th data-field="state" data-checkbox=true></th>
-								<td data-field="ID">${c.id}</td>
+								<td align="center"><input type="checkbox" name="cid"
+									value="${c.id}" /></td>
+								<td>${c.id}</td>
 								<td>${c.username}</td>
 								<td>${c.email}</td>
 								<td>${c.registration}</td>
 								<td>${c.lastLogin}</td>
 								<td>${c.status}</td>
-								<!--    <s:url var="url_del" value="/user/del_contact">
-                                        <s:param name="cid" value="${c.id}"/>
-                                    </s:url>   
-                                    <s:url var="url_edit" value="/user/edit_contact">
-                                        <s:param name="cid" value="${c.id}"/>
-                                    </s:url> 
-                                    <td><a href="${url_edit}">Edit</a> | <a href="${url_del}">Delete</a></td>
-                               -->
 							</tr>
 						</c:forEach>
 					</table>
-					<script>
-					  var $table = $('#table')
-					  
-					   function getIdSelections() {
-    return $.map($table.bootstrapTable('getSelections'), function (row) {
-      return row.ID
-    })
-  }
-					 					  
-					  function responseHandler(res) {
-					    $.each(res.rows, function (i, row) {
-					      row.state = $.inArray(row.ID, selections) !== -1
-					    })
-					    return res
-					  }
-					  $(function() {
-						  responseHandler(getIDSelections())
-						   
-						  })
-					 
-					</script>
-					
 				</form>
+			</td>
+		</tr>
 	</table>
 </body>
 </html>

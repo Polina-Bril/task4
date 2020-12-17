@@ -1,5 +1,6 @@
 package auth.com.itra.auth.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import auth.com.itra.auth.model.User;
 import auth.com.itra.auth.repository.UserRepository;
@@ -47,14 +50,18 @@ public class AdminController {
         return "index";
     }  
 
-    @RequestMapping(value = "/checkbx")
-    public String  deleteUser(
-//    		@RequestParam(required = true, defaultValue = "" ) String action,
-//    						  @RequestParam("cid") Long[] userIds,
-    						  @PathVariable("btn") String [] btSelectItem,
-//    						  @PathVariable("btSelectAll") String btSelectAll,
-                              Model model) {
-//  	if (action.equals("remove")){
+    @PostMapping(value = "/checkbx")
+    public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) String action,
+//    						  @RequestParam("cid") Long[] userIds, 
+    						  Model model) {
+  		System.out.println("hi");
+
+    	System.out.println(action);
+//  		System.out.println(Arrays.toString(userIds));
+  		System.out.println("Bye");
+
+  	if (action.equals("remove")){
+  		System.out.println("del");
 //    		List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {
 //        		for (User u:users) {
@@ -64,8 +71,9 @@ public class AdminController {
 //        			}
 //        		}
 //        	}
-//        }
-//        if (action.equals("block")){
+        }
+        if (action.equals("block")){
+      		System.out.println("blo");
 //        	List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {
 //        		for (User u:users) {
@@ -75,8 +83,9 @@ public class AdminController {
 //        			}
 //        		}
 //        	}
-//        }
-//        if (action.equals("unblock")){
+        }
+        if (action.equals("unblock")){
+      		System.out.println("unb");
 //        	List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {
 //        		for (User u:users) {
@@ -86,8 +95,8 @@ public class AdminController {
 //        			}
 //        		}
 //        	}
-//        }
-        return "redirect:/admin";
+        }
+        return "redirect:admin";
     }
 
   }
