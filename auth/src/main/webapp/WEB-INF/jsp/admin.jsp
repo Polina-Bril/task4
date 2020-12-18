@@ -28,7 +28,7 @@
 			<td height="350px" valign="top" width="100%">
 				
 				<h3>User List</h3>
-				<form action="<s:url value="/checkbx"/>" method="post">
+				<form action="<s:url value="/checkbx"/>" method="get">
 					<div id="toolbar">
 						<button id="action" value="block" class="btn btn-danger">Block</button>
 						<button id="action" value="unblock" class="btn btn-danger">
@@ -39,7 +39,7 @@
 						</button>
 
 					</div>
-					<table data-toggle="table" data-toolbar="#toolbar" border="1"
+					<table data-toggle="table" data-toolbar="#toolbar" data-id-field="ID" border="1"
 						cellpadding="3" width="100%">
 
 						<thead>

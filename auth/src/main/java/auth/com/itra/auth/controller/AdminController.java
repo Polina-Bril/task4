@@ -50,9 +50,9 @@ public class AdminController {
         return "index";
     }  
 
-    @PostMapping(value = "/checkbx")
+    @GetMapping(value = "/checkbx")
     public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) String action,
-//    						  @RequestParam("cid") Long[] userIds, 
+    						  @RequestParam("cid") Long[] userIds, 
     						  Model model) {
   		System.out.println("hi");
 
