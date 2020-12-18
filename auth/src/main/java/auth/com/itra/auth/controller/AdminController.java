@@ -51,16 +51,16 @@ public class AdminController {
     }  
 
     @GetMapping(value = "/checkbx")
-    public String  deleteUser(@RequestParam(required = true, defaultValue = "" ) String action,
+    public String  deleteUser(@RequestParam("actions") String actions,
     						  @RequestParam("cid") Long[] userIds, 
     						  Model model) {
   		System.out.println("hi");
 
-    	System.out.println(action);
-//  		System.out.println(Arrays.toString(userIds));
+     	System.out.println(actions);
+  		System.out.println(Arrays.toString(userIds));
   		System.out.println("Bye");
 
-  	if (action.equals("remove")){
+  	if (actions.equals("remove")){
   		System.out.println("del");
 //    		List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {
@@ -72,7 +72,7 @@ public class AdminController {
 //        		}
 //        	}
         }
-        if (action.equals("block")){
+        if (actions.equals("block")){
       		System.out.println("blo");
 //        	List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {
@@ -84,7 +84,7 @@ public class AdminController {
 //        		}
 //        	}
         }
-        if (action.equals("unblock")){
+        if (actions.equals("unblock")){
       		System.out.println("unb");
 //        	List<User>users=userService.allUsers();
 //        	for (Long id:userIds) {

@@ -8,16 +8,16 @@
 <title>User List</title>
 <s:url var="url_css" value="/static/css/style.css" />
 <link href="${url_css}" rel="stylesheet" type="text/css" />
-<link rel="stylesheet"
+<!--  <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
 	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-	crossorigin="anonymous">
+	crossorigin="anonymous">  -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script>
+<!-- <script
+	src="https://unpkg.com/bootstrap-table@1.18.1/dist/bootstrap-table.min.js"></script> -->
 <script
 	src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 
@@ -26,21 +26,20 @@
 	<table border="1" width="80%" align="center">
 		<tr>
 			<td height="350px" valign="top" width="100%">
-				
+
 				<h3>User List</h3>
 				<form action="<s:url value="/checkbx"/>" method="get">
 					<div id="toolbar">
-						<button id="action" value="block" class="btn btn-danger">Block</button>
-						<button id="action" value="unblock" class="btn btn-danger">
-							<i class="fa fa-unlock"></i>
-						</button>
-						<button id="action" value="remove" class="btn btn-danger">
-							<i class="fa fa-trash"></i>
-						</button>
-
+						<button id="block" name="actions" value="block" class="btn btn-danger">Block</button>
+							<button id="unblock" name="actions" value="unblock" class="btn btn-danger">
+								<i class="fa fa-unlock"></i>
+							</button>
+								<button id="remove" name="actions" value="remove" class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+								</button>
 					</div>
-					<table data-toggle="table" data-toolbar="#toolbar" data-unique-id="ID" border="1"
-						cellpadding="3" width="100%">
+					<table data-toggle="table" data-toolbar="#toolbar"
+						data-unique-id="ID" border="1" cellpadding="3" width="100%">
 
 						<thead>
 							<tr>
