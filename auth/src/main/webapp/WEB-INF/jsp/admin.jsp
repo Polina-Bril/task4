@@ -39,13 +39,13 @@
 						</button>
 
 					</div>
-					<table data-toggle="table" data-toolbar="#toolbar" data-id-field="ID" border="1"
+					<table data-toggle="table" data-toolbar="#toolbar" data-unique-id="ID" border="1"
 						cellpadding="3" width="100%">
 
 						<thead>
 							<tr>
 								<th data-field="state" data-checkbox=true></th>
-								<th>ID</th>
+								<th data-field="ID">ID</th>
 								<th>NAME</th>
 								<th>EMAIL</th>
 								<th>REGISTRY DATE</th>
