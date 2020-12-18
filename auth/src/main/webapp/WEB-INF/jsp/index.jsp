@@ -7,10 +7,15 @@
 <head>
   <title>Start Page</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
+ <style>
+   body {
+    background: #c0c0c0; 
+    margin-top: 20%;
+   }
+  </style>
 </head>
 <body>
-<div>
+<div align="center">
   <h3>${pageContext.request.userPrincipal.name}</h3>
   <sec:authorize access="!isAuthenticated()">
     <h4><a href="/login">Sign In</a></h4>

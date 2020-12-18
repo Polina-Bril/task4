@@ -8,10 +8,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.core.session.SessionInformation;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import auth.com.itra.auth.model.Role;
 import auth.com.itra.auth.model.User;
@@ -23,6 +29,8 @@ public class UserService implements UserDetailsService {
 	private EntityManager em;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	private SessionRegistry sessionRegistry;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -84,5 +92,30 @@ public class UserService implements UserDetailsService {
 	public String getStatus(User user) {
 		user.setStatus(user.isBlocked() ? "is blocked" : "is active");
 		return user.getStatus();
+	}
+
+	public void expireUserSessions(String username) {
+		for (Object principal : sessionRegistry.getAllPrincipals()) {
+			if (principal instanceof User) {
+				UserDetails userDetails = (UserDetails) principal;
+				if (userDetails.getUsername().equals(username)) {
+					for (SessionInformation information : sessionRegistry.getAllSessions(userDetails, true)) {
+						information.expireNow();
+						killExpiredSessionForSure(information.getSessionId());
+					}
+				}
+			}
+		}
+	}
+
+	public void killExpiredSessionForSure(String id) {
+		try {
+			HttpHeaders requestHeaders = new HttpHeaders();
+			requestHeaders.add("Cookie", "JSESSIONID=" + id);
+			HttpEntity requestEntity = new HttpEntity(null, requestHeaders);
+			RestTemplate rt = new RestTemplate();
+			rt.exchange("http://localhost:8080/login", HttpMethod.GET, requestEntity, String.class);
+		} catch (Exception ex) {
+		}
 	}
 }
