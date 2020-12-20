@@ -1,0 +1,9 @@
+auth\com\itra\auth\config\MvcConfig.class
+auth\com\itra\auth\model\Role.class
+auth\com\itra\auth\repository\UserRepository.class
+auth\com\itra\auth\model\User.class
+auth\com\itra\auth\config\WebSecurityConfig.class
+auth\com\itra\auth\controller\AdminController.class
+auth\com\itra\auth\controller\RegistrationController.class
+auth\com\itra\auth\service\UserService.class
+auth\com\itra\auth\Application.class
